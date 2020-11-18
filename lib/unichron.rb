@@ -45,3 +45,43 @@ class Unichron
 
 end
 
+module UnichronUtils
+  
+  class Quicktime
+
+    attr_reader :time
+
+    def initialize(time: Time.now, speed: 4)
+
+      @time, @speed = Unichron.new(time).to_time, speed  
+
+    end
+
+    def start()
+
+      @state = :play
+
+      Thread.new do 
+
+        loop do 
+          (sleep 0.5; next) if @state == :pause
+          @time += 1
+          sleep 1.0 / @speed
+        end
+
+      end
+    end
+
+    def pause()
+      @state = :pause
+    end
+
+    def play()
+      @state = :play
+    end
+
+    def set_time(s)
+      @time = Chronic.parse(s)
+    end
+  end
+end

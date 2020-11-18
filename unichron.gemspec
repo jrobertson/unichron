@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'unichron'
-  s.version = '0.1.0'
+  s.version = '0.2.0'
   s.summary = 'A universal chron tool.'
   s.authors = ['James Robertson']
   s.files = Dir['lib/unichron.rb']
