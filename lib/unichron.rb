@@ -28,7 +28,7 @@ class Unichron
     relative_time = if elapsed < Time.now - (Date.today - 1).to_time then
       Subunit.seconds(elapsed).strfunit("%s")
     else
-      t2.strftime("%b %d")
+      @r.strftime("%b %d")
     end    
     
   end
