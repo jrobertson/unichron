@@ -2,6 +2,7 @@
 
 # file: unichron.rb
 
+require 'subunit'
 require 'chronic_cron'
 require 'christian_calendar'
 
