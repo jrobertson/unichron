@@ -11,9 +11,9 @@ class Unichron
 
   attr_reader :r
 
-  def initialize(obj, debug: false)
+  def initialize(obj, mode=nil, debug: false)
 
-    @debug = debug
+    @mode, @debug = mode, debug
     @r = select_method(obj)
     
   end
@@ -22,7 +22,7 @@ class Unichron
   # e.g. elapsed(Time.now - 4000) #=> 1h
   # note: An elapsed time more than a day is returned as a calendar date
   #
-  def elapsed()
+  def elapsed(limit=:day)
     
     elapsed = Time.now - @r
 
@@ -57,7 +57,13 @@ class Unichron
     if obj.is_a? String then
 
       s = obj
-      r = Chronic.parse(s)
+      
+      r = if @mode = :little_endian
+        Chronic.parse(s, :endian_precedence => :little)
+      else
+        Chronic.parse(s)
+      end
+      
       puts 'r1: ' + r.inspect if @debug      
       return r if r
       
