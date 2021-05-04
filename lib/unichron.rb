@@ -85,7 +85,10 @@ class Unichron
 
       
       return nil
-
+      
+    elsif obj.is_a? Integer
+      r = Time.at obj
+      return r
     else
       obj
     end
