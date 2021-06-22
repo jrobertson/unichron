@@ -42,6 +42,10 @@ class Unichron
     @r.to_date if valid?
   end  
   
+  def to_datetime
+    @r.to_datetime if valid?
+  end    
+  
   def to_i()
     @r.to_time.to_i if valid?
   end
